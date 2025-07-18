@@ -3,6 +3,12 @@ import React from 'react'
 import { Tabs } from 'expo-router'
 import Iconss from '@/components/iconss';
 
+const TabIcon = ({ name }) => {
+    return (
+        <Iconss family="FontAwesome" name={name} color="#32a852" />
+    )
+}
+
 
 
 const _layout = () => {
@@ -16,8 +22,8 @@ const _layout = () => {
                 name="index"
                 options={{
                     title: 'Home',
-                    tabBarIcon: ({ color }) => (
-                        <Iconss family="FontAwesome" name="home" color={"#0fb1db"} />
+                    tabBarIcon: () => (
+                        <TabIcon name="home" />
                     ),
                 }}
             />

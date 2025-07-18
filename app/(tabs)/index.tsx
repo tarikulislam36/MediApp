@@ -4,7 +4,7 @@ import Nav from '@/components/Nav'
 
 const index = () => {
   return (
-    <View>
+    <View className="flex-1 bg-bgclr">
       <Nav />
     </View>
   )
