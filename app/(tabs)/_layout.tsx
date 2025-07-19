@@ -3,9 +3,9 @@ import React from 'react'
 import { Tabs } from 'expo-router'
 import Iconss from '@/components/iconss';
 
-const TabIcon = ({ name }) => {
+const TabIcon = ({ name, focused, family }) => {
     return (
-        <Iconss family="FontAwesome" name={name} color="#32a852" />
+        <Iconss family={family} name={name} color={focused ? "#0fb1db" : "#ccc"} />
     )
 }
 
@@ -22,8 +22,8 @@ const _layout = () => {
                 name="index"
                 options={{
                     title: 'Home',
-                    tabBarIcon: () => (
-                        <TabIcon name="home" />
+                    tabBarIcon: ({ focused }) => (
+                        <TabIcon family="FontAwesome" name="home" focused={focused} />
                     ),
                 }}
             />
@@ -31,8 +31,8 @@ const _layout = () => {
                 name="book"
                 options={{
                     title: 'Book',
-                    tabBarIcon: ({ color }) => (
-                        <Iconss family="FontAwesome" name="book" color={"#0fb1db"} />
+                    tabBarIcon: ({ focused }) => (
+                        <TabIcon family="FontAwesome" name="book" focused={focused} />
                     ),
                 }}
             />
@@ -40,8 +40,8 @@ const _layout = () => {
                 name="profile"
                 options={{
                     title: 'Profile',
-                    tabBarIcon: ({ color }) => (
-                        <Iconss family="FontAwesome" name="user" color={"#0fb1db"} />
+                    tabBarIcon: ({ focused }) => (
+                        <TabIcon family="FontAwesome" name="user" focused={focused} />
                     ),
                 }}
             />

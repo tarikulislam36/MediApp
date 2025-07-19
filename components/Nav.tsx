@@ -14,7 +14,9 @@ const Nav = () => {
                 paddingTop: 20,
                 justifyContent: 'center',
                 position: 'relative',
+
             }}
+            className="z-2"
         >
             {/* <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#333' }}>
                 Home
@@ -41,7 +43,7 @@ const Nav = () => {
                 }}
             />
             */}
-        </LinearGradient>
+        </LinearGradient >
     );
 };
 
