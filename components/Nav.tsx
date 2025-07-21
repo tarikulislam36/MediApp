@@ -13,7 +13,12 @@ const Nav = () => {
                 paddingHorizontal: 16,
                 paddingTop: 20,
                 justifyContent: 'center',
-                position: 'relative',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 0,
+
 
             }}
             className="z-2"
