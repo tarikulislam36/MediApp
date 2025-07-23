@@ -1,0 +1,72 @@
+import React from 'react';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
+import ServiceCard from './ServiceCard'; // Make sure this component exists and supports props
+
+const services = [
+    { id: 1, name: 'Plumbing', icon: 'wrench' },
+    { id: 2, name: 'Electrician', icon: 'bolt' },
+    { id: 3, name: 'Cleaning', icon: 'broom' },
+    { id: 4, name: 'Repair', icon: 'tools' },
+    { id: 5, name: 'Delivery', icon: 'truck' },
+    { id: 6, name: 'Painting', icon: 'paint-brush' },
+    { id: 7, name: 'Repair', icon: 'tools' },
+    { id: 8, name: 'Delivery', icon: 'truck' },
+    { id: 9, name: 'Painting', icon: 'paint-brush' },
+    { id: 10, name: 'Gardening', icon: 'leaf' },
+    { id: 11, name: 'Carpentry', icon: 'hammer' },
+    { id: 12, name: 'Masonry', icon: 'brick' },
+    { id: 13, name: 'Roofing', icon: 'home' },
+    { id: 14, name: 'Pest Control', icon: 'bug' },
+    { id: 15, name: 'HVAC', icon: 'snowflake' }
+
+];
+
+export default function ServiceSection() {
+    const renderItem = ({ item }) => (
+        <ServiceCard
+            name={item.name}
+            icon={item.icon}
+            onPress={() => console.log(item.name)}
+        />
+    );
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.heading}>Service Section</Text>
+
+            <View style={styles.cardContainer}>
+                <FlatList
+                    data={services}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id.toString()}
+                    numColumns={3}
+                    columnWrapperStyle={styles.columnWrapper}
+                />
+            </View>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        backgroundColor: '#E5E7EB', // Tailwind's bg-gray-200
+        paddingTop: 2,
+    },
+    heading: {
+        color: '#000',
+        fontSize: 14,
+        marginBottom: 16,
+    },
+    cardContainer: {
+        backgroundColor: '#fff',
+        borderRadius: 12,
+        padding: 16,
+        width: '98%',
+    },
+    columnWrapper: {
+        justifyContent: 'space-between',
+    },
+});
