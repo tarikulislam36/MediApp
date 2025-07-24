@@ -3,6 +3,7 @@ import { View, FlatList } from 'react-native';
 import Nav from '@/components/Nav';
 import BannerSlider from '@/components/BannerSlider';
 import ServiceSection from '@/components/ServiceSection';
+import Emergency from '../../components/Emergency';
 
 const index = () => {
   const dummyData = [{ key: 'dummy' }]; // Needed to render FlatList even if empty
@@ -16,7 +17,10 @@ const index = () => {
         keyExtractor={(item) => item.key}
         ListHeaderComponent={
           <View className="p-0 bg-white mt-28 rounded-t-3xl shadow-lg">
+
+
             <BannerSlider />
+            <ServiceSection />
             <ServiceSection />
           </View>
         }

@@ -5,7 +5,7 @@ import Iconss from '@/components/iconss';
 
 const TabIcon = ({ name, focused, family }) => {
     return (
-        <Iconss family={family} name={name} color={focused ? "#0fb1db" : "#ccc"} />
+        <Iconss family={family} name={name} size={27} color={focused ? "#0fb1db" : "#ccc"} />
     )
 }
 
@@ -16,6 +16,18 @@ const _layout = () => {
         <Tabs
             screenOptions={{
                 headerShown: false,
+
+                tabBarStyle: {
+                    position: 'absolute',
+                    bottom: -15,
+                    left: 0,
+                    right: 0,
+
+                    backgroundColor: '#f0d16c',  //f5d469
+                    borderTopWidth: 0,
+                    elevation: 0,
+                    shadowColor: 'transparent',
+                },
             }}
         >
             <Tabs.Screen

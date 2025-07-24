@@ -16,7 +16,7 @@ export default function Iconss({
     family,
     name,
     color,
-    size = 27, //24
+    size, //24, 27
 }: IconProps) {
     switch (family) {
         case 'FontAwesome':

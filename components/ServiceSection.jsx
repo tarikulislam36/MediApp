@@ -9,15 +9,6 @@ const services = [
     { id: 4, name: 'Repair', icon: 'tools' },
     { id: 5, name: 'Delivery', icon: 'truck' },
     { id: 6, name: 'Painting', icon: 'paint-brush' },
-    { id: 7, name: 'Repair', icon: 'tools' },
-    { id: 8, name: 'Delivery', icon: 'truck' },
-    { id: 9, name: 'Painting', icon: 'paint-brush' },
-    { id: 10, name: 'Gardening', icon: 'leaf' },
-    { id: 11, name: 'Carpentry', icon: 'hammer' },
-    { id: 12, name: 'Masonry', icon: 'brick' },
-    { id: 13, name: 'Roofing', icon: 'home' },
-    { id: 14, name: 'Pest Control', icon: 'bug' },
-    { id: 15, name: 'HVAC', icon: 'snowflake' }
 
 ];
 
@@ -32,7 +23,7 @@ export default function ServiceSection() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>Service Section</Text>
+            {/* <Text style={styles.heading}>Service Section</Text> */}
 
             <View style={styles.cardContainer}>
                 <FlatList
@@ -52,7 +43,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor: '#E5E7EB', // Tailwind's bg-gray-200
+        // backgroundColor: '#E5E7EB', // Tailwind's bg-gray-200
         paddingTop: 2,
     },
     heading: {

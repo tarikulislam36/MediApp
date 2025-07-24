@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Emergency from './Emergency';
 
 const Nav = () => {
     return (
         <LinearGradient
-            colors={['#b5e8f5', '#FFFFFF']} // peach to white
+            colors={['#f0c743', '#FFFFFF']} // peach to white #b5e8f5  , #fc6603 . #f0c743
             start={{ x: 0.5, y: 0 }}
             end={{ x: 0.5, y: 1 }}
             style={{
@@ -48,6 +49,8 @@ const Nav = () => {
                 }}
             />
             */}
+
+            <Emergency></Emergency>
         </LinearGradient >
     );
 };
