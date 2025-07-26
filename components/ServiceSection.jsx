@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 import ServiceCard from './ServiceCard'; // Make sure this component exists and supports props
 
 const services = [
-    { id: 1, name: 'Plumbing', icon: 'wrench' },
+    { id: 1, name: 'Plumbing', icon: 'user-doctor' },
     { id: 2, name: 'Electrician', icon: 'bolt' },
     { id: 3, name: 'Cleaning', icon: 'broom' },
     { id: 4, name: 'Repair', icon: 'tools' },
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 12,
         padding: 16,
-        width: '98%',
+        width: '100%',
     },
     columnWrapper: {
         justifyContent: 'space-between',
