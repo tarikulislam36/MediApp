@@ -10,19 +10,19 @@ const index = () => {
   const dummyData = [{ key: 'dummy' }]; // Needed to render FlatList even if empty
 
   return (
-    <View className="flex-1 bg-bgclr">
+    <View className="flex-1 bg-white">
       <Nav />
       <FlatList
         data={dummyData}
         renderItem={null}
         keyExtractor={(item) => item.key}
         ListHeaderComponent={
-          <View className="p-0 bg-white mt-28 rounded-t-3xl shadow-lg h-[100vh]">
+          <View className="p-0 bg-transparent mt-28 rounded-t-3xl  h-[100vh]  overflow-hidden">
 
-            <Headeritems />
+            {/* <Headeritems /> */}
             <BannerSlider />
-            {/* <ServiceSection />
-            <ServiceSection /> */}
+            <ServiceSection />
+
           </View>
         }
         contentContainerStyle={{ paddingBottom: 30 }}

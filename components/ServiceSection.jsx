@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     cardContainer: {
         backgroundColor: '#fff',
         borderRadius: 12,
-        padding: 16,
+        padding: 6,
         width: '100%',
     },
     columnWrapper: {

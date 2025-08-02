@@ -55,7 +55,7 @@ const BannerSlider = () => {
   return (
     <View className="relative mt-0 items-center top-0 p-5  ">
       <PagerView
-        style={{ width: width * 0.9, height: 160 }}
+        style={{ width: width * 1, height: 160 }}
         initialPage={0}
         ref={pagerRef}
         onPageSelected={(e) => setCurrentPage(e.nativeEvent.position)}
@@ -65,7 +65,7 @@ const BannerSlider = () => {
             <Image
               source={{ uri: item.image }}
               style={{
-                width: width * 0.9,
+                width: width * 1,
                 height: 160,
                 borderRadius: 12,
               }}
