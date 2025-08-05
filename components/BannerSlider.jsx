@@ -53,7 +53,7 @@ const BannerSlider = () => {
   };
 
   return (
-    <View className="relative mt-0 items-center top-0 p-5  ">
+    <View className="relative mt-12 items-center top-0 p-5  ">
       <PagerView
         style={{ width: width * 1, height: 160 }}
         initialPage={0}

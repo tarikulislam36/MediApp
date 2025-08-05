@@ -27,7 +27,7 @@ const _layout = () => {
                     borderTopWidth: 0,
                     elevation: 0,
                     shadowColor: 'transparent',
-                    height: 130,
+                    height: 115,
                     borderRadius: 20,
                     paddingBottom: 10,
                     paddingTop: 10,

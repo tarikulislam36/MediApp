@@ -5,6 +5,8 @@ import BannerSlider from '@/components/BannerSlider';
 import ServiceSection from '@/components/ServiceSection';
 import Emergency from '../../components/Emergency';
 import Headeritems from '../../components/Headeritems';
+import ServSection from '../../components/ServSection';
+import AssociateBrands from '../../components/AssociateBrands';
 
 const index = () => {
   const dummyData = [{ key: 'dummy' }]; // Needed to render FlatList even if empty
@@ -17,11 +19,13 @@ const index = () => {
         renderItem={null}
         keyExtractor={(item) => item.key}
         ListHeaderComponent={
-          <View className="p-0 bg-transparent mt-28 rounded-t-3xl  h-[100vh]  overflow-hidden">
+          <View className="p-0 bg-transparent mt-20 rounded-t-3xl  h-[100vh]  overflow-hidden">
 
             {/* <Headeritems /> */}
             <BannerSlider />
-            <ServiceSection />
+            {/* <ServiceSection /> */}
+            <ServSection />
+            <AssociateBrands></AssociateBrands>
 
           </View>
         }
