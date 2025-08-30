@@ -1,21 +1,67 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Stack } from 'expo-router'
-import './global.css'
+import { Provider } from "react-redux"
+import store from "./store"
+import Navigation from "./Navigation"
 
-const _layout = () => {
+export default function _layout() {
   return (
-    <Stack>
-      <Stack.Screen
-        name="(tabs)"
-        options={
-          { headerShown: false }
-        }
-
-      />
-
-    </Stack>
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
   )
 }
 
-export default _layout
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { View, Text } from 'react-native'
+// import React from 'react'
+// import { Stack } from 'expo-router'
+// import './global.css'
+// import Login from './Login'
+
+// const _layout = () => {
+//   return (
+
+//     <Login />
+
+//     //  <Stack>
+//     //   <Stack.Screen
+//     //     name="(tabs)"
+//     //     options={
+//     //       { headerShown: false }
+//     //     }
+
+//     //   />
+
+//     // </Stack>
+
+
+//   )
+// }
+
+// export default _layout
