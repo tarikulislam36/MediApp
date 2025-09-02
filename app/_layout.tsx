@@ -1,6 +1,7 @@
 import { Provider } from "react-redux"
 import store from "./store"
 import Navigation from "./Navigation"
+import './global.css'
 
 export default function _layout() {
   return (
@@ -65,3 +66,6 @@ export default function _layout() {
 // }
 
 // export default _layout
+
+
+

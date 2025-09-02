@@ -4,25 +4,41 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 const API_URL = "https://eportal.60pluscare.in/api/v1"
 
 // 🔹 Login thunk
-export const loginUser = createAsyncThunk("auth/loginUser", async ({ mobile, password }, { rejectWithValue }) => {
-    try {
-        const res = await fetch(`${API_URL}/login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ mobile, password }),
-        })
-        const data = await res.json()
+export const loginUser = createAsyncThunk(
+    "auth/loginUser",
+    async ({ mobile, password }, { rejectWithValue }) => {
+        try {
+            const res = await fetch(`${API_URL}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ mobile, password }),
+            })
+            const data = await res.json()
 
-        if (!res.ok) return rejectWithValue(data.message || "Login failed")
+            console.log("LOGIN RESPONSE:", data) // 👈 keep for debugging
 
-        // store token in AsyncStorage
-        await AsyncStorage.setItem("token", data.token)
+            if (!res.ok) return rejectWithValue(data.message || "Login failed")
 
-        return data
-    } catch (err) {
-        return rejectWithValue(err.message)
+            // ✅ token is inside data.data.token
+            const token = data?.data?.token
+
+            if (typeof token === "string" && token) {
+                await AsyncStorage.setItem("token", token)
+
+                // normalize response so Redux always has { token, user }
+                return {
+                    token,
+                    user: data.data, // full user object
+                    message: data.message,
+                }
+            } else {
+                return rejectWithValue("No token received from server")
+            }
+        } catch (err) {
+            return rejectWithValue(err.message)
+        }
     }
-})
+)
 
 // 🔹 Register thunk
 export const registerUser = createAsyncThunk("auth/registerUser", async (userData, { rejectWithValue }) => {
@@ -50,7 +66,9 @@ export const loadToken = createAsyncThunk("auth/loadToken", async () => {
 // 🔹 Logout
 export const logoutUser = createAsyncThunk("auth/logoutUser", async () => {
     await AsyncStorage.removeItem("token")
+    console.log("User logged out");
     return null
+
 })
 
 // Slice
@@ -61,6 +79,7 @@ const authSlice = createSlice({
         token: null,
         loading: false,
         error: null,
+        isLoggedIn: false,
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -72,6 +91,7 @@ const authSlice = createSlice({
                 state.token = action.payload.token
                 state.user = action.payload.user
             })
+
             .addCase(loginUser.rejected, (state, action) => { state.loading = false; state.error = action.payload })
 
             // register
@@ -88,6 +108,7 @@ const authSlice = createSlice({
             .addCase(logoutUser.fulfilled, (state) => {
                 state.user = null
                 state.token = null
+                state.isLoggedIn = false;
             })
     }
 })

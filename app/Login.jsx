@@ -1,33 +1,38 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { View, TextInput, Button, Text } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "./store/authSlice";
 
-const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+export default function Login() {
+    const [username, setUsername] = useState("");
+    const dispatch = useDispatch();
+    const auth = useSelector((state) => state.auth);
+
+    const handleLogin = () => {
+        if (username.trim() !== "") {
+            dispatch(login({ name: username }));
+        }
+    };
 
     return (
-        <View className="flex-1 justify-center items-center bg-white px-6">
-            <Text className="text-3xl font-bold mb-8 text-blue-600">Login</Text>
-            <TextInput
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 mb-4 text-base"
-                placeholder="Email"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-            />
-            <TextInput
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 mb-6 text-base"
-                placeholder="Password"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-            />
-            <TouchableOpacity className="w-full bg-blue-600 py-3 rounded-lg" onPress={() => { /* handle login */ }}>
-                <Text className="text-white text-center font-semibold text-base">Sign In</Text>
-            </TouchableOpacity>
+        <View style={{ padding: 20 }}>
+            {auth.isLoggedIn ? (
+                <Text>Welcome {auth.user?.name}</Text>
+            ) : (
+                <>
+                    <TextInput
+                        placeholder="Enter your name"
+                        value={username}
+                        onChangeText={setUsername}
+                        style={{
+                            borderWidth: 1,
+                            padding: 10,
+                            marginBottom: 10,
+                        }}
+                    />
+                    <Button title="Login" onPress={handleLogin} />
+                </>
+            )}
         </View>
     );
-};
-
-export default Login;
+}

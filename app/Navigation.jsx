@@ -1,30 +1,27 @@
 import React, { useEffect } from "react"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import { Stack, useRouter } from 'expo-router'
 import { useDispatch, useSelector } from "react-redux"
 import { loadToken } from "./store/authSlice"
-
-import LoginScreen from "../screen/LoginScreen"
-
-const Stack = createNativeStackNavigator()
 
 export default function Navigation() {
     const { token } = useSelector((state) => state.auth)
     const dispatch = useDispatch()
+    const router = useRouter()
 
     useEffect(() => {
         dispatch(loadToken()) // check token on app start
     }, [])
 
+    useEffect(() => {
+        if (!token) {
+            // router.replace("/login") // Redirect to login when logged out
+        }
+    }, [token])
+
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            {token ? (
-                <Stack.Screen
-                    name="(tabs)"
-                    options={{ headerShown: false }}
-                />
-            ) : (
-                <Stack.Screen name="Login" component={LoginScreen} />
-            )}
-        </Stack.Navigator>
+        <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="login" options={{ headerShown: false }} />
+        </Stack>
     )
 }
